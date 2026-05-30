@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "react-hooks", "typescript"],
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-console": "warn",
+    "react/react-in-jsx-scope": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  },
+  "env": {
+    "browser": true,
+    "es2022": true
+  }
+}
