@@ -83,14 +83,14 @@ grep -r "from.*shared/types" src/modules/ --include="*.tsx" --include="*.ts"
 Run a production build to confirm there are no broken imports or TypeScript errors:
 
 ```bash
-npm run build
+pnpm build
 ```
 
 A clean exit (no errors) means the removal is complete. If the build fails:
 
 - Read the error message to identify which file still holds a reference to the deleted module.
 - Fix the import (either delete the reference or move the dependency to shared).
-- Re-run `npm run build`.
+- Re-run `pnpm build`.
 
 ---
 
@@ -99,8 +99,8 @@ A clean exit (no errors) means the removal is complete. If the build fails:
 Run the full test suite to make sure no test files reference the removed module:
 
 ```bash
-npm run test
-npm run test:e2e
+pnpm test
+pnpm test:e2e
 ```
 
 Delete any test files in `e2e/` that were testing the removed page (e.g., `e2e/dashboard.spec.ts`).
@@ -112,7 +112,7 @@ Delete any test files in `e2e/` that were testing the removed page (e.g., `e2e/d
 - [ ] `pages/<name>.html` deleted
 - [ ] `src/modules/<name>/` deleted
 - [ ] `src/shared/` inspected for orphaned components, stores, hooks, utils, and types
-- [ ] `npm run build` exits cleanly
-- [ ] `npm run test` passes
+- [ ] `pnpm build` exits cleanly
+- [ ] `pnpm test` passes
 - [ ] `e2e/<name>.spec.ts` deleted (if present)
 - [ ] No navigation links pointing to the removed page remain in other modules (fix or remove them)

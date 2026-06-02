@@ -31,34 +31,34 @@ git clone <repo-url> mpa-aparatus
 cd mpa-aparatus
 
 # 2. Install dependencies
-npm install
+pnpm install
 
 # 3. Start the dev server
-npm run dev
+pnpm dev
 # Vite will print URLs for each discovered MPA page, e.g.:
 #   http://localhost:5173/          (home)
 #   http://localhost:5173/auth.html (auth)
 
 # 4. Run unit tests
-npm run test
+pnpm test
 
 # 5. Run unit tests with UI
-npm run test:ui
+pnpm test:ui
 
 # 6. Run unit tests with coverage
-npm run test:coverage
+pnpm test:coverage
 
 # 7. Run E2E tests (starts Vite dev server automatically)
-npm run test:e2e
+pnpm test:e2e
 
 # 8. Lint
-npm run lint
+pnpm lint
 
 # 9. Format
-npm run format
+pnpm format
 
 # 10. Production build
-npm run build
+pnpm build
 # Output goes to dist/
 ```
 
