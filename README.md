@@ -1,4 +1,4 @@
-# mpa-aparatus
+# mpa-apparatus
 
 A Vite Multi-Page Application (MPA) boilerplate with React 19, TypeScript 5, and a module-based architecture. Each HTML entry point is a separate browser page; within each page, Wouter handles client-side sub-routing. Modules are strictly isolated — shared code lives in `src/shared/`.
 
@@ -27,8 +27,8 @@ A Vite Multi-Page Application (MPA) boilerplate with React 19, TypeScript 5, and
 
 ```bash
 # 1. Clone
-git clone <repo-url> mpa-aparatus
-cd mpa-aparatus
+git clone <repo-url> mpa-apparatus
+cd mpa-apparatus
 
 # 2. Install dependencies
 pnpm install
@@ -67,7 +67,7 @@ pnpm build
 ## Project Structure (Top Level)
 
 ```
-mpa-aparatus/
+mpa-apparatus/
 ├── pages/               # HTML entry points (one per MPA page)
 │   ├── index.html       # Home page
 │   └── auth.html        # Auth page

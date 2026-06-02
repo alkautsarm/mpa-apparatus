@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 test.describe("Home page", () => {
   test("loads and displays the heading", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("heading", { name: /mpa-aparatus/i })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /mpa-apparatus/i })).toBeVisible();
   });
 
   test("displays the increment button", async ({ page }) => {

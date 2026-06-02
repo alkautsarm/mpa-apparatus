@@ -7,7 +7,7 @@ This document explains the directory structure, the module system, the shared la
 ## Directory Tree
 
 ```
-mpa-aparatus/
+mpa-apparatus/
 │
 ├── pages/                          # HTML entry points — one file = one browser page
 │   ├── index.html                  # Home page (served at /)

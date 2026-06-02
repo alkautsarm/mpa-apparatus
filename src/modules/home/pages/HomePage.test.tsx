@@ -6,7 +6,7 @@ import { HomePage } from "./HomePage";
 describe("HomePage", () => {
   it("renders the boilerplate heading", () => {
     render(<HomePage />);
-    expect(screen.getByRole("heading", { name: /mpa-aparatus/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /mpa-apparatus/i })).toBeInTheDocument();
   });
 
   it("renders the increment button", () => {

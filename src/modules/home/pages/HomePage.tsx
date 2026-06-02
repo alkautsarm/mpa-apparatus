@@ -9,7 +9,7 @@ export function HomePage() {
     <main className="flex min-h-screen flex-col items-center justify-center gap-6 p-8">
       <div className="flex flex-col items-center gap-2 text-center">
         <Rocket className="size-12 text-primary" />
-        <h1 className="text-4xl font-bold tracking-tight">mpa-aparatus</h1>
+        <h1 className="text-4xl font-bold tracking-tight">mpa-apparatus</h1>
         <p className="text-muted-foreground">
           A modular MPA boilerplate with Vite, React, and TypeScript.
         </p>
