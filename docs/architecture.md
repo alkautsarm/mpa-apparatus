@@ -124,7 +124,7 @@ See [Allowed vs. Disallowed Imports](#allowed-vs-disallowed-imports) below for e
 
 | Folder | What goes here |
 |---|---|
-| `components/ui/` | shadcn components. Added with `npx shadcn add <name>`. Never edited manually unless customizing. |
+| `components/ui/` | shadcn components. Added with `pnpm dlx shadcn@latest add <name>`. Never edited manually unless customizing. |
 | `components/` (root) | Custom shared React components that are not shadcn (e.g., `PageLayout`, `ErrorBoundary`). |
 | `hooks/` | Custom React hooks that could be useful in multiple modules (e.g., `useDebounce`, `useMediaQuery`). |
 | `store/` | Global Zustand stores that need to be read or written by more than one module (e.g., `useAuthStore` tracking the logged-in user so the home module can read it). |

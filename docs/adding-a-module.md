@@ -181,7 +181,7 @@ export function DashboardPage() {
 Start (or restart) the dev server:
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 Vite will automatically discover `pages/dashboard.html` and log something like:

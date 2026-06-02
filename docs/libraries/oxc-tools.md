@@ -46,10 +46,10 @@ Consult the [oxlint rules reference](https://oxc.rs/docs/guide/usage/linter/rule
 
 ```bash
 # Lint the entire project
-npm run lint
+pnpm lint
 
 # Lint a specific file or directory
-npx oxlint src/modules/home/
+pnpm exec oxlint src/modules/home/
 ```
 
 oxlint exits with code `1` if any errors are found. Warnings do not cause a non-zero exit code by default.
@@ -99,10 +99,10 @@ These options follow the same semantics as Prettier's config options.
 
 ```bash
 # Format all files in-place
-npm run format
+pnpm format
 
 # Check formatting without writing (exits non-zero if changes would be made)
-npm run format:check
+pnpm format:check
 ```
 
 `format:check` is useful in CI to enforce that all committed code is formatted.
@@ -146,7 +146,7 @@ When you stage TypeScript files and commit:
 
 ```sh
 # .husky/pre-commit
-npx lint-staged
+pnpm exec lint-staged
 ```
 
 ### Skipping the Hook (Emergency Only)
@@ -168,7 +168,7 @@ If you need a richer plugin ecosystem (e.g., `eslint-plugin-import`, custom rule
 ### 1. Remove OXC tools
 
 ```bash
-npm uninstall oxlint oxfmt
+pnpm remove oxlint oxfmt
 ```
 
 Delete `.oxlintrc.json` and `.oxfmtrc.json`.
@@ -176,8 +176,8 @@ Delete `.oxlintrc.json` and `.oxfmtrc.json`.
 ### 2. Install ESLint + Prettier
 
 ```bash
-npm install -D eslint @eslint/js typescript-eslint eslint-plugin-react eslint-plugin-react-hooks
-npm install -D prettier eslint-config-prettier eslint-plugin-prettier
+pnpm add -D eslint @eslint/js typescript-eslint eslint-plugin-react eslint-plugin-react-hooks
+pnpm add -D prettier eslint-config-prettier eslint-plugin-prettier
 ```
 
 ### 3. Create ESLint config (`eslint.config.js` — flat config)

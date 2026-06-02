@@ -147,16 +147,16 @@ This keeps tests easy to find and makes it obvious when a file has no tests.
 
 ```bash
 # Run all tests once (CI mode)
-npm run test
+pnpm test
 
 # Run in watch mode (interactive terminal)
-npm run test -- --watch
+pnpm test -- --watch
 
 # Open the Vitest browser UI (visual test runner)
-npm run test:ui
+pnpm test:ui
 
 # Generate a coverage report (outputs to coverage/)
-npm run test:coverage
+pnpm test:coverage
 ```
 
 ---
@@ -166,13 +166,13 @@ npm run test:coverage
 1. Uninstall Vitest:
 
    ```bash
-   npm uninstall vitest @vitest/ui @vitest/coverage-v8
+   pnpm remove vitest @vitest/ui @vitest/coverage-v8
    ```
 
 2. Install Jest and its dependencies:
 
    ```bash
-   npm install -D jest @types/jest jest-environment-jsdom ts-jest @testing-library/jest-dom
+   pnpm add -D jest @types/jest jest-environment-jsdom ts-jest @testing-library/jest-dom
    ```
 
 3. Create `jest.config.ts`:
@@ -207,7 +207,7 @@ import { defineConfig, devices } from "@playwright/test";
 export default defineConfig({
   testDir: "./e2e",
   webServer: {
-    command: "npm run dev",
+    command: "pnpm dev",
     url: "http://localhost:5173",
     reuseExistingServer: !process.env.CI,
   },
@@ -253,22 +253,22 @@ test("navigates to register page", async ({ page }) => {
 
 ```bash
 # Run all E2E tests (headless)
-npm run test:e2e
+pnpm test:e2e
 
 # Run with the Playwright UI (headed, interactive)
-npx playwright test --ui
+pnpm exec playwright test --ui
 
 # Run a specific file
-npx playwright test e2e/auth.spec.ts
+pnpm exec playwright test e2e/auth.spec.ts
 
 # Run in headed mode for debugging
-npx playwright test --headed
+pnpm exec playwright test --headed
 ```
 
 The first time you run Playwright, install the browser binaries:
 
 ```bash
-npx playwright install
+pnpm exec playwright install
 ```
 
 ### Swapping Playwright for Cypress
@@ -276,19 +276,19 @@ npx playwright install
 1. Uninstall Playwright:
 
    ```bash
-   npm uninstall @playwright/test
+   pnpm remove @playwright/test
    ```
 
 2. Install Cypress:
 
    ```bash
-   npm install -D cypress
+   pnpm add -D cypress
    ```
 
 3. Initialize Cypress (creates `cypress/` directory and config):
 
    ```bash
-   npx cypress open
+   pnpm exec cypress open
    ```
 
 4. Move tests from `e2e/` to `cypress/e2e/` and rewrite them using Cypress syntax:
