@@ -23,7 +23,7 @@ export function HomePage() {
       </div>
 
       <nav className="flex gap-4 text-sm">
-        <a href="/pages/auth.html" className="text-primary underline-offset-4 hover:underline">
+        <a href="/auth" className="text-primary underline-offset-4 hover:underline">
           Auth module →
         </a>
       </nav>
