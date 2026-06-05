@@ -15,6 +15,7 @@ A Vite Multi-Page Application (MPA) boilerplate with React 19, TypeScript 5, and
 | State | Zustand 5 |
 | Forms | react-hook-form + zod + @hookform/resolvers |
 | Icons | lucide-react |
+| Observability | Sentry (error tracking + Core Web Vitals) |
 | Linting | oxlint |
 | Formatting | oxfmt |
 | Git Hooks | Husky + lint-staged |
@@ -102,6 +103,7 @@ mpa-apparatus/
 | [docs/libraries/wouter.md](docs/libraries/wouter.md) | Wouter routing within MPA pages |
 | [docs/libraries/testing.md](docs/libraries/testing.md) | Vitest unit tests and Playwright E2E |
 | [docs/libraries/oxc-tools.md](docs/libraries/oxc-tools.md) | oxlint, oxfmt, Husky + lint-staged |
+| [docs/observability.md](docs/observability.md) | Sentry error tracking and Core Web Vitals setup |
 
 ---
 

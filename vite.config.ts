@@ -1,5 +1,6 @@
 import { resolve } from "node:path";
 import { globSync } from "glob";
+import { sentryVitePlugin } from "@sentry/vite-plugin";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig, type Plugin } from "vite";
@@ -36,14 +37,23 @@ const devHtmlRewritePlugin = (): Plugin => ({
   },
 });
 
+const sentryPlugin = process.env.SENTRY_AUTH_TOKEN
+  ? sentryVitePlugin({
+      org: process.env.SENTRY_ORG,
+      project: process.env.SENTRY_PROJECT,
+      authToken: process.env.SENTRY_AUTH_TOKEN,
+    })
+  : null;
+
 export default defineConfig({
-  plugins: [react(), tailwindcss(), devHtmlRewritePlugin()],
+  plugins: [react(), tailwindcss(), devHtmlRewritePlugin(), sentryPlugin].filter(Boolean),
   resolve: {
     alias: {
       "@": resolve(__dirname, "src"),
     },
   },
   build: {
+    sourcemap: true,
     rollupOptions: {
       input: pages,
     },
