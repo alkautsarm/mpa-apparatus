@@ -14,6 +14,7 @@ A Vite Multi-Page Application (MPA) boilerplate with React 19, TypeScript 5, and
 | Routing | Wouter 3 (per-page client-side routing) |
 | State | Zustand 5 |
 | Forms | react-hook-form + zod + @hookform/resolvers |
+| i18n | react-i18next + i18next (en + id out of the box) |
 | Icons | lucide-react |
 | Linting | oxlint |
 | Formatting | oxfmt |
@@ -102,6 +103,7 @@ mpa-apparatus/
 | [docs/libraries/wouter.md](docs/libraries/wouter.md) | Wouter routing within MPA pages |
 | [docs/libraries/testing.md](docs/libraries/testing.md) | Vitest unit tests and Playwright E2E |
 | [docs/libraries/oxc-tools.md](docs/libraries/oxc-tools.md) | oxlint, oxfmt, Husky + lint-staged |
+| [docs/i18n.md](docs/i18n.md) | i18n setup, namespace conventions, adding locales, Zod integration |
 
 ---
 

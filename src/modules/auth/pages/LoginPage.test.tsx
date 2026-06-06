@@ -22,8 +22,8 @@ describe("LoginPage", () => {
     renderWithRouter(<LoginPage />);
     await user.click(screen.getByRole("button", { name: /sign in/i }));
     await waitFor(() => {
-      expect(screen.getByText(/please enter a valid email/i)).toBeInTheDocument();
-      expect(screen.getByText(/password must be at least 8/i)).toBeInTheDocument();
+      expect(screen.getByText(/invalid email/i)).toBeInTheDocument();
+      expect(screen.getByText(/string must contain at least 8/i)).toBeInTheDocument();
     });
   });
 
@@ -33,7 +33,7 @@ describe("LoginPage", () => {
     await user.type(screen.getByLabelText(/email/i), "not-an-email");
     await user.click(screen.getByRole("button", { name: /sign in/i }));
     await waitFor(() => {
-      expect(screen.getByText(/please enter a valid email/i)).toBeInTheDocument();
+      expect(screen.getByText(/invalid email/i)).toBeInTheDocument();
     });
   });
 });

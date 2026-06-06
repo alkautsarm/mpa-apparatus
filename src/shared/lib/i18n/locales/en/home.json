@@ -1,0 +1,11 @@
+{
+  "heading": "mpa-apparatus",
+  "subheading": "A modular MPA boilerplate with Vite, React, and TypeScript.",
+  "counter": {
+    "label": "Zustand counter:",
+    "increment": "Increment"
+  },
+  "nav": {
+    "authModule": "Auth module →"
+  }
+}

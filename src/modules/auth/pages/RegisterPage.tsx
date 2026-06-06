@@ -1,7 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { useLocation } from "wouter";
 import { z } from "zod";
+import { i18next } from "@/shared/lib/i18n";
 import { Button } from "@/shared/components/ui/button";
 import {
   Form,
@@ -14,25 +16,32 @@ import {
 import { Input } from "@/shared/components/ui/input";
 import { useAuthStore } from "../store/useAuthStore";
 
-const registerSchema = z
-  .object({
-    email: z.string().email("Please enter a valid email address"),
-    password: z.string().min(8, "Password must be at least 8 characters"),
-    confirmPassword: z.string(),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
-    path: ["confirmPassword"],
-  });
+function buildRegisterSchema() {
+  return z
+    .object({
+      email: z.string().email(),
+      password: z.string().min(8),
+      confirmPassword: z.string(),
+    })
+    .refine((data) => data.password === data.confirmPassword, {
+      message: i18next.t("auth:validation.passwordMismatch"),
+      path: ["confirmPassword"],
+    });
+}
 
-type RegisterFormValues = z.infer<typeof registerSchema>;
+type RegisterFormValues = {
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
 
 export function RegisterPage() {
+  const { t } = useTranslation("auth");
   const [, navigate] = useLocation();
   const { isLoading, setLoading, setError } = useAuthStore();
 
   const form = useForm<RegisterFormValues>({
-    resolver: zodResolver(registerSchema),
+    resolver: zodResolver(buildRegisterSchema()),
     defaultValues: { email: "", password: "", confirmPassword: "" },
   });
 
@@ -47,8 +56,8 @@ export function RegisterPage() {
     <main className="flex min-h-screen items-center justify-center p-8">
       <div className="w-full max-w-sm space-y-6">
         <div className="space-y-1 text-center">
-          <h1 className="text-2xl font-bold">Create an account</h1>
-          <p className="text-sm text-muted-foreground">Enter your details to get started</p>
+          <h1 className="text-2xl font-bold">{t("register.title")}</h1>
+          <p className="text-sm text-muted-foreground">{t("register.subtitle")}</p>
         </div>
 
         <Form {...form}>
@@ -58,11 +67,11 @@ export function RegisterPage() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>{t("fields.email")}</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
-                      placeholder="you@example.com"
+                      placeholder={t("fields.emailPlaceholder")}
                       autoComplete="email"
                       {...field}
                     />
@@ -77,11 +86,11 @@ export function RegisterPage() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>{t("fields.password")}</FormLabel>
                   <FormControl>
                     <Input
                       type="password"
-                      placeholder="••••••••"
+                      placeholder={t("fields.passwordPlaceholder")}
                       autoComplete="new-password"
                       {...field}
                     />
@@ -96,11 +105,11 @@ export function RegisterPage() {
               name="confirmPassword"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Confirm password</FormLabel>
+                  <FormLabel>{t("fields.confirmPassword")}</FormLabel>
                   <FormControl>
                     <Input
                       type="password"
-                      placeholder="••••••••"
+                      placeholder={t("fields.passwordPlaceholder")}
                       autoComplete="new-password"
                       {...field}
                     />
@@ -111,19 +120,19 @@ export function RegisterPage() {
             />
 
             <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? "Creating account…" : "Create account"}
+              {isLoading ? t("register.submitting") : t("register.submit")}
             </Button>
           </form>
         </Form>
 
         <p className="text-center text-sm text-muted-foreground">
-          Already have an account?{" "}
+          {t("register.hasAccount")}{" "}
           <button
             type="button"
             onClick={() => navigate("/login")}
             className="text-primary underline-offset-4 hover:underline"
           >
-            Sign in
+            {t("register.login")}
           </button>
         </p>
       </div>

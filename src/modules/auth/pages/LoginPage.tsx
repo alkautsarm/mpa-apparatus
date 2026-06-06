@@ -1,5 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { useLocation } from "wouter";
 import { z } from "zod";
 import { Button } from "@/shared/components/ui/button";
@@ -15,13 +16,14 @@ import { Input } from "@/shared/components/ui/input";
 import { useAuthStore } from "../store/useAuthStore";
 
 const loginSchema = z.object({
-  email: z.string().email("Please enter a valid email address"),
-  password: z.string().min(8, "Password must be at least 8 characters"),
+  email: z.string().email(),
+  password: z.string().min(8),
 });
 
 type LoginFormValues = z.infer<typeof loginSchema>;
 
 export function LoginPage() {
+  const { t } = useTranslation("auth");
   const [, navigate] = useLocation();
   const { isLoading, setLoading, setError } = useAuthStore();
 
@@ -41,8 +43,8 @@ export function LoginPage() {
     <main className="flex min-h-screen items-center justify-center p-8">
       <div className="w-full max-w-sm space-y-6">
         <div className="space-y-1 text-center">
-          <h1 className="text-2xl font-bold">Sign in</h1>
-          <p className="text-sm text-muted-foreground">Enter your credentials to continue</p>
+          <h1 className="text-2xl font-bold">{t("login.title")}</h1>
+          <p className="text-sm text-muted-foreground">{t("login.subtitle")}</p>
         </div>
 
         <Form {...form}>
@@ -52,11 +54,11 @@ export function LoginPage() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>{t("fields.email")}</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
-                      placeholder="you@example.com"
+                      placeholder={t("fields.emailPlaceholder")}
                       autoComplete="email"
                       {...field}
                     />
@@ -71,11 +73,11 @@ export function LoginPage() {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel>{t("fields.password")}</FormLabel>
                   <FormControl>
                     <Input
                       type="password"
-                      placeholder="••••••••"
+                      placeholder={t("fields.passwordPlaceholder")}
                       autoComplete="current-password"
                       {...field}
                     />
@@ -86,19 +88,19 @@ export function LoginPage() {
             />
 
             <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? "Signing in…" : "Sign in"}
+              {isLoading ? t("login.submitting") : t("login.submit")}
             </Button>
           </form>
         </Form>
 
         <p className="text-center text-sm text-muted-foreground">
-          Don&apos;t have an account?{" "}
+          {t("login.noAccount")}{" "}
           <button
             type="button"
             onClick={() => navigate("/register")}
             className="text-primary underline-offset-4 hover:underline"
           >
-            Register
+            {t("login.register")}
           </button>
         </p>
       </div>
