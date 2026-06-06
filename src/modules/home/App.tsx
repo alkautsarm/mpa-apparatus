@@ -1,10 +1,13 @@
 import { Router } from "wouter";
+import { ObservabilityErrorBoundary } from "@/shared/lib/observability";
 import { HomeRoutes } from "./routes";
 
 export default function App() {
   return (
-    <Router>
-      <HomeRoutes />
-    </Router>
+    <ObservabilityErrorBoundary>
+      <Router>
+        <HomeRoutes />
+      </Router>
+    </ObservabilityErrorBoundary>
   );
 }
